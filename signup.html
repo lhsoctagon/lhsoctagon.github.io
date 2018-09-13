@@ -158,10 +158,10 @@
   <script>
   function signUp ()
   {
-    var id = document.getElementById("id");
-    var name = document.getElementById("name")
-    var email = document.getElementById("email");
-    var password = document.getElementById("password")
+    var id = document.getElementById("id").value;
+    var name = document.getElementById("name").value
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value
     firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
   // Handle Errors here.
     var errorCode = error.code;
@@ -169,7 +169,7 @@
   // ...
 });
   writeUserData(id,name,email)
-  window.location.replace("http://stackoverflow.com")
+  window.location.replace("./dashboard.html")
   return false;
   }
   function writeUserData(userId, name, email) {
