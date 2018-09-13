@@ -109,7 +109,7 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                       </div>
-                      <input class="form-control" placeholder="Name" type="text">
+                      <input class="form-control" id = "name " placeholder="Name" type="text">
                     </div>
                   </div>
                   <div class="form-group">
@@ -117,7 +117,7 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                       </div>
-                      <input class="form-control" placeholder="Email" type="email">
+                      <input class="form-control" id = "email" placeholder="Email" type="email">
                     </div>
                   </div>
                   <div class="form-group">
@@ -125,7 +125,7 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fa fa-id-card"></i></span>
                       </div>
-                      <input class="form-control" placeholder="ID" type="number">
+                      <input class="form-control" id = "id" placeholder="ID" type="number">
                     </div>
                   </div>
                   <div class="form-group">
@@ -133,11 +133,11 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                       </div>
-                      <input class="form-control" placeholder="Password" type="password">
+                      <input class="form-control" id = "password" placeholder="Password" type="password">
                     </div>
                   </div>
                   <div class="text-center">
-                    <button type="button" class="btn btn-primary mt-4">Create account</button>
+                    <button type="button" class="btn btn-primary mt-4" onclick="signUp()">Create account</button>
                   </div>
                 </form>
               </div>
@@ -154,6 +154,42 @@
   <script src="./assets/vendor/headroom/headroom.min.js"></script>
   <!-- Argon JS -->
   <script src="./assets/js/argon.js?v=1.0.0"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
+  <script>
+  function signUp ()
+  {
+    var id = document.getElementById("id");
+    var name = document.getElementById("name")
+    var email = document.getElementById("email");
+    var password = document.getElementById("password")
+    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+  // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+  // ...
+});
+  writeUserData(id,name,email)
+  window.location.replace("http://stackoverflow.com")
+  return false;
+  }
+  function writeUserData(userId, name, email) {
+  firebase.database().ref('users/' + userId).set({
+    username: name,
+    email: email,
+    id: userId
+  });
+}
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDy7rKBiLWSMe7KUVLBkSbBaJsjVpz0Aek",
+      authDomain: "octagon-attendance.firebaseapp.com",
+      databaseURL: "https://octagon-attendance.firebaseio.com",
+      projectId: "octagon-attendance",
+      storageBucket: "octagon-attendance.appspot.com",
+      messagingSenderId: "388543055121"
+    };
+    firebase.initializeApp(config);
+  </script>
 </body>
 
 </html>
