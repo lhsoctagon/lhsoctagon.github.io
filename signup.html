@@ -169,8 +169,10 @@
   // ...
 });
   writeUserData(id,name,email)
-  window.location.replace("./dashboard.html")
-  return false;
+  setTimeout (function () {
+    window.location.replace("./dashboard.html")
+  },1000)
+
   }
   function writeUserData(userId, name, email) {
   firebase.database().ref('users/' + userId).set({
