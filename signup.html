@@ -183,7 +183,12 @@
   firebase.database().ref('users/' + userId).set({
     name: name,
     email: email,
-    id: userId
+    id: userId,
+    points:0,
+    meetings_attended: 0,
+    hours: 0,
+    completed_membership: false
+
   });
 }
     // Initialize Firebase
