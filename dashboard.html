@@ -27,7 +27,7 @@
 
 
     <!--  Fonts and icons     -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
     <link href="assets/css/themify-icons.css" rel="stylesheet">
 
@@ -269,13 +269,12 @@
 	  };
 	  firebase.initializeApp(config);
 		firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-		var user = firebase.auth().currentUser;
-		console.log(user)
-  } else {
-    // No user is signed in.
-  }
-});
+	  if (user) {
+	    console.log(user)
+	  } else {
+	    // No user is signed in.
+	  }
+	});
 
 
 		var app = new Vue({
