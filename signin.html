@@ -104,7 +104,7 @@
                 <div class="text-center text-muted mb-4">
                   <small> Sign In </small>
                 </div>
-                <form role="form">
+
                   <div class="form-group mb-3">
                     <div class="input-group input-group-alternative">
                       <div class="input-group-prepend">
@@ -130,7 +130,7 @@
                   <div class="text-center">
                     <button type="button" class="btn btn-primary my-4" onclick = "signIn()">Sign in</button>
                   </div>
-                </form>
+              
               </div>
             </div>
             <div class="row mt-3">
@@ -164,6 +164,7 @@ function signIn (){
   var errorCode = error.code;
   var errorMessage = error.message;
   alert(errorMessage)
+  console.log(errorNessage)
   works =  false;
   // ...
 });
