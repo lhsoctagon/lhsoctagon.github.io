@@ -94,7 +94,7 @@
 
 
         <div class="content">
-            <div class="container-fluid">
+            <div class="container-fluid" id="app">
                 <div class="row">
 									<div class="col-lg-3 col-sm-6">
                         <div class="card">
@@ -109,7 +109,7 @@
                                         <div class="numbers">
                                             <p>Meetings Attended</p>
 																						<div id="meetings">
-																							0
+																							{{meetings}}
 																						</div>
                                         </div>
                                     </div>
@@ -133,7 +133,7 @@
                                     <div class="col-xs-7">
                                         <div class="numbers">
                                             <p>Hours of Service</p>
-                                          0
+                                          {{hours}}
                                         </div>
                                     </div>
                                 </div>
@@ -155,7 +155,7 @@
                                     <div class="col-xs-7">
                                         <div class="numbers">
                                             <p>Total Points</p>
-                                            0
+                                            {{points}}
                                         </div>
                                     </div>
                                 </div>
@@ -178,7 +178,7 @@
                                     <div class="col-xs-7">
                                         <div class="numbers">
                                             <p>Completed Membership?</p>
-                                            No
+                                            {{membership}}
                                         </div>
                                     </div>
                                 </div>
@@ -253,6 +253,39 @@
             });
 
     	});
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+	<script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
+	<script>
+	  // Initialize Firebase
+	  var config = {
+	    apiKey: "AIzaSyDy7rKBiLWSMe7KUVLBkSbBaJsjVpz0Aek",
+	    authDomain: "octagon-attendance.firebaseapp.com",
+	    databaseURL: "https://octagon-attendance.firebaseio.com",
+	    projectId: "octagon-attendance",
+	    storageBucket: "octagon-attendance.appspot.com",
+	    messagingSenderId: "388543055121"
+	  };
+	  firebase.initializeApp(config);
+		var user = firebase.auth().currentUser;
+		var app = new Vue({
+  // element to mount to
+  el: '#app',
+  // initial data
+  data: {
+		points: user.points,
+		meetings: user.meetings,
+		hours: user.hours
+
+
+  },
+  // firebase binding
+  // https://github.com/vuejs/vuefire
+  firebase: {
+    users: usersRef
+  },
+})
 	</script>
 
 </html>
