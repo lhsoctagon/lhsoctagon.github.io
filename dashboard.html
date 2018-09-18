@@ -275,6 +275,7 @@
 	    // No user is signed in.
 	  }
 	});
+	var app;
 	var database = firebase.database()
 	database.ref('/users/').once('value').then(function(snapshot) {
       for (var id in snapshot.val()){
@@ -285,23 +286,7 @@
 
     });
 
-		var app = new Vue({
-  // element to mount to
-  el: '#app',
-  // initial data
-  data: {
-		points: user.points,
-		meetings: user.meetings,
-		hours: user.hours
 
-
-  },
-  // firebase binding
-  // https://github.com/vuejs/vuefire
-  firebase: {
-    users: usersRef
-  },
-})
 	</script>
 
 </html>
