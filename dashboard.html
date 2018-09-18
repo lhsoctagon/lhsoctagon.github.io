@@ -44,7 +44,7 @@
 
     	<div class="sidebar-wrapper">
             <div class="logo">
-							<h3> Octagon </h3>
+							<h3> {{name}} </h3>
             </div>
 
             <ul class="nav">
@@ -235,21 +235,6 @@
 	<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
 	<script src="assets/js/demo.js"></script>
 
-	<script type="text/javascript">
-    	$(document).ready(function(){
-
-
-        	$.notify({
-            	icon: 'ti-gift',
-            	message: "Welcome to <b> Octagon </b> - its better than CSF."
-
-            },{
-                type: 'success',
-                timer: 4000
-            });
-
-    	});
-	</script>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 	<script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
@@ -290,7 +275,8 @@
 			points: user.points,
 			meetings: user.meetings,
 			hours: user.hours,
-			membership: user.completed_membership
+			membership: user.completed_membership,
+			name: user.name
 
 	  }
 	})
