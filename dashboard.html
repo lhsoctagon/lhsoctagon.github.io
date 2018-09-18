@@ -268,16 +268,23 @@
 	    messagingSenderId: "388543055121"
 	  };
 	  firebase.initializeApp(config);
+		var a;
 		var user;
-		firebase.auth().onAuthStateChanged(function(a) {
-	  if (a) {
-	    console.log(a)
-			 user = a
+		firebase.auth().onAuthStateChanged(function(user) {
+	  if (user) {
+	    console.log(user)
+			 a = user;
 	  } else {
 	    // No user is signed in.
 	  }
 	});
+	database.ref('/users/').once('value').then(function(snapshot) {
+      for (var id in snapshot.val()){
+      if(snapshot.val()[id].email == a.email)
+			user = snapshot.val()[id];
+      }
 
+    });
 
 		var app = new Vue({
   // element to mount to
