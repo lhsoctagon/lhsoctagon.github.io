@@ -173,9 +173,12 @@
   // ...
 });
     writeUserData(id,name,email)
-    if (works){
-    window.location.replace("./dashboard.html")
-  }
+    setTimeout(function(){
+      if (works){
+      window.location.replace("./dashboard.html")
+    }
+  },700)
+
 
   }
   function writeUserData(userId, name, email) {
