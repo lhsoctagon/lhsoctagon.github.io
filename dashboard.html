@@ -32,7 +32,7 @@
     <link href="assets/css/themify-icons.css" rel="stylesheet">
 
 </head>
-<body>
+<body id="app">
 
 <div class="wrapper">
     <div class="sidebar" data-background-color="white" data-active-color="danger">
@@ -94,7 +94,7 @@
 
 
         <div class="content">
-            <div class="container-fluid" id="app">
+            <div class="container-fluid">
                 <div class="row">
 									<div class="col-lg-3 col-sm-6">
                         <div class="card">
@@ -269,7 +269,7 @@
       }
 	 app = new Vue({
 	  // element to mount to
-	  el: 'body',
+	  el: '#app',
 	  // initial data
 	  data: {
 			points: user.points,
