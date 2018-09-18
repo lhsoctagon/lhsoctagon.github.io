@@ -238,7 +238,6 @@
 	<script type="text/javascript">
     	$(document).ready(function(){
 
-        	demo.initChartist();
 
         	$.notify({
             	icon: 'ti-gift',
@@ -283,7 +282,18 @@
 			user = snapshot.val()[id];
 			console.log(user)
       }
+	 app = new Vue({
+	  // element to mount to
+	  el: '#app',
+	  // initial data
+	  data: {
+			points: user.points,
+			meetings: user.meetings,
+			hours: user.hours
 
+
+	  }
+	})
     });
 
 
