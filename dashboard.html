@@ -263,10 +263,12 @@
 	var database = firebase.database()
 	database.ref('/users/').once('value').then(function(snapshot) {
       for (var id in snapshot.val()){
-      if(snapshot.val()[id].email == a.email)
+      if(snapshot.val()[id].email == a.email){
 			user = snapshot.val()[id];
 			console.log(user)
+		}
       }
+
 	 app = new Vue({
 	  // element to mount to
 	  el: '#app',
