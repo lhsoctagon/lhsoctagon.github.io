@@ -159,7 +159,7 @@ function signIn (){
   var works = true;
   var email = document.getElementById("email").value;
   var password = document.getElementById("password").value;
-  setTimeout(function (){
+
   firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
   // Handle Errors here.
   var errorCode = error.code;
@@ -167,16 +167,7 @@ function signIn (){
   alert(errorMessage)
   console.log(errorMessage)
   works =  false;
-  // ...
-});
-},2000)
-setTimeout(
-  function(){
-    console.log(works)
-    if(works){
-    window.location.replace("./dashboard.html")
-  }
-},2000)
+}
 }
   // Initialize Firebase
   var config = {
