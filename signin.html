@@ -168,6 +168,12 @@ function signIn (){
   console.log(errorMessage)
   works =  false;
 })
+  setTimeout(function () {
+    if(works){
+      console.log(works)
+      window.location.href = "https://lhsocatagon.github.io/dashboard.html"
+    }
+  },500)
 }
   // Initialize Firebase
   var config = {
