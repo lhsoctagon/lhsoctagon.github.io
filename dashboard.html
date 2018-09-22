@@ -282,9 +282,9 @@ A hub helper helps set-up and manage a booth where you will pass out promotional
 	  el: '#app',
 	  // initial data
 	  data: {
-			points: user.points,
+			points: Math.round(user.points),
 			meetings: user.meetings_attended,
-			hours: user.hours,
+			hours: user.hours.toFixed(2),
 			membership: user.completed_membership,
 			name: user.name
 
