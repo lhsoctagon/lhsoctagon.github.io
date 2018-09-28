@@ -200,14 +200,12 @@
                                 <p class="category"></p>
                             </div>
                             <div class="content">
-                                <p> Hi everyone! Please sign up on this form to confirm that you will be going to the event! If you haven't already, remember to sign up <a href = https://tinyurl.com/vivacalle18SJ> here </a>. Click register and choose 9/23 hub helper - Martial Cottle Park (12:00 pm to 4:00pm). Once you arrive, try to find one of the Octagon Officers (Arnav). We hope to see you there!
+<p> Description:
+The Alzheimer's Association each year brings the Walk to End Alzheimer's to over 600 communities in the U.S., and they could not do it without their dedicated Walk day volunteers (you)! Volunteers help with event set up, registration and check in, water stations, advocacy efforts, cheerleading and more! Raise awareness and bring your passion for the cause on Walk day.
 <br>
+NOTE: Space is limited! We will email to confirm with you shortly after you sign up!
 <br>
-NOTE: Space is limited, so if you plan on going, register ASAP! After you are done registering make sure to fill out <a href="https://tinyurl.com/octagonvivacalle2018"> this form. </a>
-<br>
-<br>
-Now what will you be doing as a hub helper?
-A hub helper helps set-up and manage a booth where you will pass out promotional and informational material to participants. Additionally, you will guide participants to the fun events going on at the different Activity Hubs happening along the route. It is a great opportunity to have fun and meet some new people, so we encourage you to go!
+We can't wait to see you there!
 
 																	 </p>
                             </div>
@@ -257,7 +255,7 @@ A hub helper helps set-up and manage a booth where you will pass out promotional
 	  };
 	  firebase.initializeApp(config);
 		var a;
-		var user;
+		var person;
 		firebase.auth().onAuthStateChanged(function(user) {
 	  if (user) {
 	    console.log(user)
@@ -272,8 +270,8 @@ A hub helper helps set-up and manage a booth where you will pass out promotional
 	database.ref('/users/').once('value').then(function(snapshot) {
       for (var id in snapshot.val()){
       if(snapshot.val()[id].email == a.email){
-			user = snapshot.val()[id];
-			console.log(user)
+			person = snapshot.val()[id];
+			console.log(person)
 		}
       }
 
@@ -282,11 +280,11 @@ A hub helper helps set-up and manage a booth where you will pass out promotional
 	  el: '#app',
 	  // initial data
 	  data: {
-			points: Math.round(user.points),
-			meetings: user.meetings_attended,
-			hours: user.hours.toFixed(2),
-			membership: user.completed_membership,
-			name: user.name
+			points: Math.round(person.points),
+			meetings: person.meetings_attended,
+			hours: person.hours.toFixed(2),
+			membership: person.completed_membership,
+			name: person.name
 
 	  }
 	})
