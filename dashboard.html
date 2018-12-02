@@ -177,8 +177,8 @@
                                     </div>
                                     <div class="col-xs-7">
                                         <div class="numbers">
-                                            <p>Completed Membership?</p>
-                                            {{membership}}
+                                            <p>Ordered Shirts?</p>
+                                            {{shirts}}
                                         </div>
                                     </div>
                                 </div>
@@ -200,7 +200,7 @@
                                 <p class="category"></p>
                             </div>
                             <div class="content">
-<p> D
+<p> {{events}}
 				    </p>
 																	 </p>
 				  
@@ -263,13 +263,20 @@
 	});
 	var app;
 	var database = firebase.database()
+	var eventos
+ firebase.database().ref('/events').once('value').then(function(snapshot) {
+   eventos = snapshot.val();
+  // ...
+});
 	database.ref('/users/').once('value').then(function(snapshot) {
+	
       for (var id in snapshot.val()){
       if(snapshot.val()[id].email == a.email){
 			person = snapshot.val()[id];
 			console.log(person)
 		}
       }
+	
 
 	 app = new Vue({
 	  // element to mount to
@@ -279,8 +286,9 @@
 			points: Math.round(person.points),
 			meetings: person.meetings_attended,
 			hours: person.hours.toFixed(2),
-			membership: person.completed_membership,
-			name: person.name
+			shirts: person.shirts,
+			name: person.name,
+		  	events: eventos
 
 	  }
 	})
