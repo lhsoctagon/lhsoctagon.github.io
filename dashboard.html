@@ -264,7 +264,7 @@
 	var eventos
  firebase.database().ref('/events').once('value').then(function(snapshot) {
    eventos = snapshot.val();
-	 documents.getElementById("events").innerHTML = eventos
+	 document.getElementById("events").innerHTML = eventos
   // ...
 });
 	database.ref('/users/').once('value').then(function(snapshot) {
