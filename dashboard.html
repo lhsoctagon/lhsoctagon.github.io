@@ -199,9 +199,7 @@
                                 <h4 class="title">Upcoming Events</h4>
                                 <p class="category"></p>
                             </div>
-                            <div class="content">
- {{events}}
-				   
+                            <div class="content" id="events">				   
 																	 </p>
 				  
                             </div>
@@ -266,6 +264,7 @@
 	var eventos
  firebase.database().ref('/events').once('value').then(function(snapshot) {
    eventos = snapshot.val();
+	 documents.getElementById("events").innerHTML = eventos
   // ...
 });
 	database.ref('/users/').once('value').then(function(snapshot) {
@@ -287,8 +286,8 @@
 			meetings: person.meetings_attended,
 			hours: person.hours.toFixed(2),
 			shirts: person.shirts,
-			name: person.name,
-		  	events: eventos
+			name: person.name
+		  	
 
 	  }
 	})
