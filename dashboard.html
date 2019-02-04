@@ -200,8 +200,8 @@
                                 <p class="category"></p>
                             </div>
                             <div class="content">
-<p> {{events}}
-				    </p>
+ {{events}}
+				   
 																	 </p>
 				  
                             </div>
@@ -288,7 +288,7 @@
 			hours: person.hours.toFixed(2),
 			shirts: person.shirts,
 			name: person.name,
-		  	events: eventos
+		  	events: JSON.parse(eventos)
 
 	  }
 	})
