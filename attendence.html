@@ -72,7 +72,7 @@ var points;
       meetings_attended = snapshot.val().meetings_attended;
       meetings_attended++
       database.ref("/users/"+userId).update({
-        points:points
+        points:points,
         meetings_attended:meetings_attended
       })
 
