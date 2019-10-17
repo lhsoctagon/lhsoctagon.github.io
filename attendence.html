@@ -67,6 +67,7 @@ var points;
     var userId = document.getElementById("id").value;
     database.ref('/users/' + userId).once('value').then(function(snapshot) {
       console.log(snapshot.val())
+	if(snapshot.val()){
       points = snapshot.val().points;
       points++;
       meetings_attended = snapshot.val().meetings_attended;
@@ -76,9 +77,16 @@ var points;
         meetings_attended:meetings_attended
       })
 
+
      document.getElementById("points").innerHTML =  "Name: " +  snapshot.val().name + " <br> Points: " + points
+}
+else {
+alert("ID doesn't exist in database, please change ID")
+}
+
 
     });
+
 
   }
 
