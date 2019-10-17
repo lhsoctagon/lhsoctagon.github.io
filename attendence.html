@@ -1,0 +1,87 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+<style>
+  .main,
+  .brand-logo {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  #points{
+  	margin-left: 10px
+  }
+
+  html {
+    overflow-x: hidden;
+  }
+</style>
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+
+</head>
+
+<body>
+<nav>
+  <div class="nav-wrapper">
+    <center> <a href="#" class="brand-logo">Attendance</a> </center>
+    <ul>
+      <li> <a href="event.html"> Event </a> </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="main">
+  <div class="row">
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="id" type="number" class="validate">
+        <label for="id">Student ID</label>
+      </div>
+   <button style="top:2em;" class="btn waves-effect waves-light" onclick="update()" type="submit" name="action">Submit
+    </button>
+     </div>
+     </div>
+
+     <p id ="points">
+    </p>
+
+     </div>
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+<script>
+var points;
+
+
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDy7rKBiLWSMe7KUVLBkSbBaJsjVpz0Aek",
+    authDomain: "octagon-attendance.firebaseapp.com",
+    databaseURL: "https://octagon-attendance.firebaseio.com",
+    projectId: "octagon-attendance",
+    storageBucket: "",
+    messagingSenderId: "388543055121"
+  };
+  firebase.initializeApp(config);
+  var database = firebase.database();
+  function update(){
+    var userId = document.getElementById("id").value;
+    database.ref('/users/' + userId).once('value').then(function(snapshot) {
+      console.log(snapshot.val())
+      points = snapshot.val().points;
+      points++;
+      meetings_attended = snapshot.val().meetings_attended;
+      meetings_attended++
+      database.ref("/users/"+userId).update({
+        points:points
+        meetings_attended:meetings_attended
+      })
+
+     document.getElementById("points").innerHTML =  "Name: " +  snapshot.val().name + " <br> Points: " + points
+
+    });
+
+  }
+
+</script>
+</body>
+</html>
